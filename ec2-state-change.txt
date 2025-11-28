@@ -1,0 +1,53 @@
+import json
+import boto3
+import os
+
+sns = boto3.client('sns')
+
+def lambda_handler(event, context):
+    # Print the incoming event for debugging
+    print("Received event: ", json.dumps(event, indent=2))
+
+    # Extract details from the EC2 state change event
+    detail = event.get('detail', {})
+    instance_id = detail.get('instance-id', 'Unknown')
+    state = detail.get('state', 'Unknown')
+
+    # Prepare message
+    message = (
+        f"EC2 Instance State Change Detected!\n\n"
+        f"Instance ID: {instance_id}\n"
+        f"New State: {state}\n"
+        f"Region: {event.get('region', 'Unknown')}\n"
+        f"Time: {event.get('time', 'Unknown')}\n"
+    )
+
+    # Send SNS notification
+    sns_topic_arn = os.environ['SNS_TOPIC_ARN']
+    sns.publish(
+        TopicArn=sns_topic_arn,
+        Subject=f"EC2 Instance {state.upper()} Notification",
+        Message=message
+    )
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps('SNS notification sent successfully!')
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "source": ["aws.ec2"],
+  "detail-type": ["EC2 Instance State-change Notification"]
+}

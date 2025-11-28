@@ -1,0 +1,67 @@
+import json
+
+def lambda_handler(event, context):
+    try:
+        num1 = event.get('num1')
+        num2 = event.get('num2')
+        operation = event.get('operation', '').lower()
+        
+        if num1 is None or num2 is None:
+            return {
+                'statusCode': 400,
+                'body': json.dumps('Please provide num1 and num2')
+            }
+
+        if operation == 'add':
+            result = num1 + num2
+        elif operation == 'sub':
+            result = num1 - num2
+        elif operation == 'mul':
+            result = num1 * num2
+        else:
+            return {
+                'statusCode': 400,
+                'body': json.dumps('Invalid operation. Use add, sub, or mul')
+            }
+
+        return {
+            'statusCode': 200,
+            'body': json.dumps({'result': result})
+        }
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': json.dumps(str(e))
+        }
+
+
+
+
+{
+  "num1": 20,
+  "num2": 4,
+  "operation": "sub"
+}
+
+=========================================================================================================================================================
+
+
+
+import json
+
+def lambda_handler(event, context):
+    print("Lambda triggered!")
+    print("Event received:", json.dumps(event))
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Hello, World!')
+    }
+
+
+
+{
+  "trigger": "manual"
+}
+
+==============================================================================================================================================================

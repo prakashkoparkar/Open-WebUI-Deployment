@@ -1,0 +1,65 @@
+  131  cd Desktop/aws-batch
+  132  cd Desktop/asw-batch/
+  133  ls
+  134  ls
+  135  ls -a
+  136  git init
+  137  ls -a
+  138  .git/
+  139  ls .git/
+  140  ls -a
+  141  git remote add origin http://13.127.91.252/aws-batch/hcl-tech.git
+  142  git remote -v
+  143  ls
+  144  git status
+  145  git add .
+  146  git status
+  147  git commit -m "added new file"
+  148  git status
+  149  git push -u origin master
+  150  history
+  151  ls .git/
+  152  cd .git/
+  153  cat HEAD
+  154  cd ..
+  155  git checkout -b prod
+  156  cat .git/HEAD
+  157  cd .git/
+  158  ls
+  159  cat config
+  160  cd
+  161  pwd
+  162  cd Downloads/
+  163  mkdir -v testing-env
+  164  cd testing-env/
+  165  ls
+  166  ls -a
+  167  git clone http://13.127.91.252/aws-batch/tech.git
+  168  ls
+  169  cd tech/
+  170  ls
+  171  ls -a
+  172  ll
+  173  git remote -v
+  174  git status
+  175  ll
+  176  echo "hello i am brock from abc" > hello.txt
+  177  echo "hello i am brock from abc" > world.txt
+  178  ll
+  179  git status
+  180  git add world.txt
+  181  git status
+  182  git commit -m "added world.txt file"
+  183  git status
+  184  git push -u origin main
+  185  echo "hello i am brock from abc" > pphp.txt
+  186  echo "hello i am brock from abc" > java.txt
+  187  echo "hello i am brock from abc" > html.txt
+  188  ll
+  189  git status
+  190  git add .
+  191  git status
+  192  git commit -m "added 4 file"
+  193  git push -u origin main
+  194  history
+
